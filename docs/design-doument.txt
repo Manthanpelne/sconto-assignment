@@ -1,0 +1,32 @@
+questions:
+
+1. Why did you choose your folder structure?
+answer: 
+I chose this folder structure because its easy to understand and highly maintainable. With this folder structure, we can segregate controllers, routes, middlewares, models etc perfectly with ease where we can understand the flow of the project quite well. 
+Also, if we want to switch from local logger to cloud based service,we only change one file without touching the logic.
+That's why i opted for controller-service-model pattern folder structure.
+
+2. How did you implement wallet atomicity to avoid race conditions?
+answer:
+This is actually a sophisticated and important part of project. Race condition occurs when user clicks REDEEM twice or five times in one sec rapidly
+So, i used mongodb multi-document transactions. I implemented logic using atomic update by using mongodb's atomic $inc operator & $gte combining with query filter so that balance amout checks and deduction happens in single operation at database level which will further prevent multiple simultaneous requests from user.
+I used session transaction where first step will be start session, then start transaction, then perform deduction, then creating reward entry and lastly committing transaction. If server fails in between, the money will roll back without being deducted.
+
+
+3. Explain the trade-offs in your indexing strategy.
+answer:
+I implemented following indexing strategy: 
+a. User collection - email indexed as unique that speeded up login lookups and prevented duplicate accounts
+b. transactions and redeemedRewards - I indexed the userId field
+These indexes helped in read performance as users mostly check their balance more frequently than transactions
+
+4. How would you scale this system if user count reaches 10 million?
+answer:
+As of now our server is of monolith form, so to handle millions of users, we would have to move from monolith to distributed system. Here how we can scale the system:
+a. By Sharding - I will split database into multiple pieces accross different servers users with id 1 - 5 to server 1, users with 6 - 10 to server 2
+b. We can cache with redis ie we can store frequently accessed data in Redis eg. % vouchers as redis is faster than mongoDB
+c. We can use RabbitMQ or Kafka for messaging queue ie asynchronous processing, because in current code, user has to wait for the database to finish transaction, wallet update and reward record before api responds. So if we use asynchrounous processing like message queue systems, if user clicks redeem we instantly tell user "request recieved" and we can put the task in queue. This may prevent server from crashing or hanging
+
+5. What do you consider the riskiest part of your current design?
+answer: 
+The riskiest part i consider is if some 500 to 1000 users try to buy same exact zomato voucher at once, they will be trying to update the same mongoDB documents simultaneously which will cause the database to slow down or crash.

@@ -1,0 +1,18 @@
+1. user indexes :
+[
+  { v: 2, key: { _id: 1 }, name: '_id_' },
+  { v: 2, key: { email: 1 }, name: 'email_1', unique: true }
+]
+
+2.transactions indexes:
+[
+  { v: 2, key: { _id: 1 }, name: '_id_' },
+  { v: 2, key: { userId: 1 }, name: 'userId_1' }
+]
+
+
+3. redeemedReward indexes:
+[
+  { v: 2, key: { _id: 1 }, name: '_id_' },
+  { v: 2, key: { userId: 1 }, name: 'userId_1' }
+]
