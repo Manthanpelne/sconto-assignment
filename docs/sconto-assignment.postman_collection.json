@@ -161,7 +161,63 @@
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "get wallet details api",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/wallet/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"wallet",
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "331"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"14b-49aOPswF0x7LO42+V3K5VqF6JOk\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 29 Dec 2025 10:06:54 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"balance\": 100,\n    \"recentTransactions\": [\n        {\n            \"_id\": \"6952510c30095b8a8b5367f5\",\n            \"userId\": \"69524f9e30095b8a8b5367e5\",\n            \"type\": \"DEBIT\",\n            \"amount\": 300,\n            \"timestamp\": \"2025-12-29T09:59:40.656Z\",\n            \"__v\": 0\n        },\n        {\n            \"_id\": \"695250bc30095b8a8b5367ed\",\n            \"userId\": \"69524f9e30095b8a8b5367e5\",\n            \"type\": \"CREDIT\",\n            \"amount\": 400,\n            \"timestamp\": \"2025-12-29T09:58:20.790Z\",\n            \"__v\": 0\n        }\n    ]\n}"
+				}
+			]
 		},
 		{
 			"name": "add money api",
@@ -201,7 +257,72 @@
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "add money api",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"amount\": \"100\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/wallet/add-money",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"wallet",
+								"add-money"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "56"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"38-4uSBr5n1YsEOw6+OlsDepoTluPs\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 29 Dec 2025 10:08:28 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"₹100 added successfully\",\n    \"newBalance\": 200\n}"
+				}
+			]
 		},
 		{
 			"name": "redeem voucher api",
@@ -233,7 +354,64 @@
 					]
 				}
 			},
-			"response": []
+			"response": [
+				{
+					"name": "redeem voucher api",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/rewards/redeem/69520ec551699e8c3ab061e4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"rewards",
+								"redeem",
+								"69520ec551699e8c3ab061e4"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "55"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"37-WMJxJEj7o7GVEVB9pME7HV3McpE\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 29 Dec 2025 10:10:25 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Success! You redeemed a Flipkart voucher.\"\n}"
+				}
+			]
 		}
 	]
 }
